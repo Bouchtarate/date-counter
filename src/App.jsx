@@ -17,6 +17,8 @@ export default function App() {
   const increaseCount = () => {
     setCount(count + step);
   };
+  const date = new Date();
+  date.setDate(date.getDate() + count);
   return (
     <div className="container">
       <div className="step">
@@ -39,7 +41,14 @@ export default function App() {
       </div>
       <div className="date">
         <p>
-          Step: {step} x Count: {count}
+          <span>
+            {count === 0
+              ? "Today is"
+              : count > 0
+              ? `${count} days from today is `
+              : `${-count} days age was `}
+          </span>
+          {date.toDateString()}
         </p>
       </div>
     </div>
